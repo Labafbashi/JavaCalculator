@@ -1,4 +1,5 @@
 pipeline {
+//Just for Test
   agent any
   stages {
     stage ('Build'){ //feature/* develop main
@@ -8,7 +9,7 @@ pipeline {
     }
     stage ('Test'){ //develop main
       when {
-        anyOf {
+        anyOf { //only develop and main branch
           branch 'develop';
           branch 'main'
         }
@@ -18,7 +19,7 @@ pipeline {
       }
     }
     stage ('Deploy'){ // main
-      when {
+      when { //only main branch
         branch 'main'
       }
       steps {
